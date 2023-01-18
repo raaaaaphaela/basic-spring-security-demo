@@ -28,6 +28,8 @@ public class SecurityConfig {
                 .authorizeHttpRequests()
                 .antMatchers(HttpMethod.POST, "/api/app-users")
                 .permitAll()
+                .antMatchers(HttpMethod.POST, "/api/hello")
+                .hasRole("ADMIN")
                 .anyRequest()
                 .authenticated()
                 .and()
@@ -44,6 +46,7 @@ public class SecurityConfig {
             }
 
             AppUser appUser = user.get();
+
             return User.builder()
                     .username(appUser.getUsername())
                     .password((appUser.getPassword()))
