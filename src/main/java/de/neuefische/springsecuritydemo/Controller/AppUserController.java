@@ -10,7 +10,7 @@ import javax.servlet.http.HttpSession;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/app-users")
 @RequiredArgsConstructor
 public class AppUserController {
 
@@ -21,7 +21,7 @@ public class AppUserController {
         return "Hello";
     }
 
-    @PostMapping("/app-users")
+    @PostMapping()
     public AppUser post(@RequestBody AppUser appUser) {
         return appUserService.create(appUser);
     }
